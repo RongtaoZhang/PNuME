@@ -1,4 +1,8 @@
+clc;
+clear all;
+addpath('../m-files');
 format long;
+
 elenodes = [0,0;3,0;3,4;0,2];
 elesol = [15;0;0;0];
 eleosol = [15;0;0;0];
@@ -22,6 +26,11 @@ for i = 1:length(t)-1
    eleosol = elesol;
    elesol = T;
 end
+quadplot(nodes,elements,T)
+shading interp;
+grid on;
+colormap(hot);
+colorbar
 T
 function [sysmat,rhs] = assignDBC2(sysmat,rhs,dbc)
     for i = 1:size(dbc,1)
@@ -62,3 +71,4 @@ function [elemat,elevec] = evaluate_instat2(elenodes,gpx,gpw,elesol,eleosol,time
        end
     end
 end
+
