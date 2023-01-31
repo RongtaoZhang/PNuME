@@ -1,0 +1,12 @@
+A = 3 * eye(4);
+v = [1;2;3;4];
+a = v.* v
+B = v * v'
+C = A * B
+eig_C = eig(C)
+x = inv(C-A)*a.*v
+C(:,2) = v
+b = C(3,:)
+c = 10:0.5:100;
+f = c.*(5+c)+1./c+2.^c;
+lf = length(f)
